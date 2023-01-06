@@ -11,29 +11,30 @@
 <body>
 
     <?php
-    require("usuarios.php");
-    
+    require("users.php");
+
     session_start();
 
     if (isset($_POST["username"])) {
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        if (autorizarUsuario($username, md5($password))) {
+        $username = $_POST["user_name"];
+        $password = $_POST["user_password"];
+        if (authUser($username, md5($password))) {
             //Usuario autorizado
-            $_SESSION['username'] = $username;
-            header("Location: contenido.php");
+            $_SESSION['user_name'] = $username;
+            header("Location: index.php");
         } else {
             //Combinación usuario-contraseña incorrecta
+            echo "Combinación usuario-contraseña incorrecta";
         }
     }
     ?>
 
     <form class="form" method="post" name="login">
         <h1 class="login-title">Login</h1>
-        <input type="text" class="login-input" name="username" placeholder="Usuario" autofocus="true" />
-        <input type="password" class="login-input" name="password" placeholder="Contraseña" />
+        <input type="text" class="login-input" name="user_name" placeholder="Usuario" autofocus="true" />
+        <input type="password" class="login-input" name="user_password" placeholder="Contraseña" />
         <input type="submit" value="Login" name="submit" class="login-button" />
-        <p class="link"><a href="registro.php">Registrarse</a></p>
+        <p class="link"><a href="register.php">Registrarse</a></p>
     </form>
 </body>
 
