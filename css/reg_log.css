@@ -1,0 +1,60 @@
+.login-body {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: #90afc5;
+    padding-top: 60px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 0px 30px;
+    margin: 0 auto;
+    background-color: #336b87;
+    border-radius: 10px;
+}
+
+.login-title {
+    text-align: center;
+    margin: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+.login-input {
+    margin: 10px 0;
+}
+
+.info {
+    font-size: 12px;
+    color: lightgray;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.login-button {
+    margin: 10px 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #763626;
+    color: white;
+    border: 0px;
+    height: 30px;
+}
+
+.login-link {
+    text-align: right;
+}
+
+.login-text-link {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+}
+
+.msg {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: #763626;
+}

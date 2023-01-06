@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    background-color: #90afc5;
+}
+
+.site-header {
+    background-color: #336b87;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.site-title {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.logout {
+    color: white;
+}
+
+.site-footer {
+    background-color: #336b87;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.copyright {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.rrss {
+    margin: 0 auto;
+}
+
+.a-rrss {
+    margin: 5px;
+    color: #763626;
+}

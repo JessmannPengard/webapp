@@ -1,8 +1,8 @@
 <?php
     session_start();
-    // Destruye sesión
+    // Destroy session
     if(session_destroy()) {
-        // Redirige a página de login
+        // Go to login page
         header("Location: login.php");
     }
 ?>
