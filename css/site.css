@@ -9,12 +9,34 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 10px 20px;
+}
+
+.logo {
+    width: 150px;
 }
 
 .site-title {
     color: white;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.session {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.username {
+    font-family: 'Courier New', Courier, monospace;
+    color: #2a3132;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.a-logout {
+    text-align: center;
+    margin-top: 5px;
 }
 
 .logout {
@@ -31,6 +53,8 @@ body {
 .copyright {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    color: #2a3132;
 }
 
 .rrss {
@@ -39,5 +63,5 @@ body {
 
 .a-rrss {
     margin: 5px;
-    color: #763626;
+    color: white;
 }

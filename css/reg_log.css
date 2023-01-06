@@ -3,7 +3,7 @@
     justify-content: space-around;
     flex-direction: column;
     background-color: #90afc5;
-    padding-top: 60px;
+    padding: 60px 0;
 }
 
 .form {
@@ -36,7 +36,7 @@
 .login-button {
     margin: 10px 0;
     font-family: 'Courier New', Courier, monospace;
-    background-color: #763626;
+    background-color: #2a3132;
     color: white;
     border: 0px;
     height: 30px;

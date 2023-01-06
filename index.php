@@ -15,16 +15,8 @@ include("auth_session.php");
 
 <body>
 
-    <header class="site-header">
-        <img src="img/logo.png" alt="">
-        <h1 class="site-title">Jessmann</h1>
-        <div>
-            <?php echo $_SESSION["user_name"]; ?>
-            <a href="logout.php"><i class="fa-solid fa-right-from-bracket logout"></i></a>
-        </div>
-        
-    </header>
-
+    <?php include(__DIR__."/view/header.php")?>
+    
     <h1>Página de contenido</h1>
     <h3>Bienvenido</h3>
 
