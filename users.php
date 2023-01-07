@@ -37,15 +37,20 @@ function authUser($userName, $userPassword)
     $stmt->execute();
     $stmt->store_result();
 
-    // True if combination user/password exists, else False
-    $result = $stmt->num_rows() > 0;
+    // Get id_user if exists the combination username/password
+    if ($stmt->num_rows()>0){
+        $stmt->bind_result($user_id);
+        $stmt->fetch();
+    } else {
+        $user_id=0;
+    }
 
     // Close connection
     $stmt->close();
     mysqli_close($conn);
 
-    // Return result
-    return $result;
+    // Return id_user if found, else 0
+    return $user_id;
 }
 
 function existUser($userName)

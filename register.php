@@ -48,9 +48,9 @@
 
     <form class="form" action="" method="post">
         <h2 class="login-title">Registro</h2>
-        <input type="text" class="login-input" name="user_name" placeholder="Nombre de usuario" required autofocus="true"/>
-        <input type="text" class="login-input" name="user_email" placeholder="Email" required>
-        <input type="password" class="login-input" name="user_password" placeholder="Contraseña*" required>
+        <input type="text" class="login-input" name="user_name" maxlength="100" placeholder="Nombre de usuario" required autofocus="true"/>
+        <input type="text" class="login-input" name="user_email" maxlength="100" placeholder="Email" required>
+        <input type="password" class="login-input" name="user_password" maxlength="100" placeholder="Contraseña*" required>
         <p class="info">* La contraseña debe contener mayúsculas, minúsculas, números y algún caracter especial</p>
         <input type="submit" name="submit" value="Registrarse" class="login-button">
         <p class="login-link"><a href="login.php" class="login-text-link">Iniciar sesión</a></p>

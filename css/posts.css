@@ -1,0 +1,32 @@
+.div-send-post {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+}
+
+.send-post {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #336b87;
+    border-radius: 10px;
+    background-color: #336b87;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.input-post {
+    height: 100px;
+    resize: none;
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+}
+
+.submit-post {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #2a3132;
+    color: white;
+    border: 0px;
+    height: 30px;
+    border-radius: 0 0 10px 10px;
+}
