@@ -7,57 +7,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/reg_log.css">
     <link rel="stylesheet" href="css/site.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Registro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Register</title>
 </head>
 
 <body class="login-body">
 
     <?php
-    require("users.php");
+    include("users.php");
+
     if (isset($_POST["user_name"])) {
         $username = $_POST["user_name"];
         $email = $_POST["user_email"];
         $password = $_POST["user_password"];
         $date_time = date("Y-m-d H:i:s");
-        if (!existUser($username)) {
+        if (!existUsername($username)) {
             if (!existEmail($email)) {
                 if (validPassword($password)) {
                     if (userRegister($username, $email, $password, $date_time)) {
                         // Register successful
-                        $msg = "El registro se ha realizado con éxito. Ya puede iniciar sesión en su cuenta";
+                        $msg = "Register was successful. You can now log into your account";
                     } else {
                         //Error registering
-                        $msg = "Se ha producido un error durante el proceso de registro. Inténtelo de nuevo más tarde";
+                        $msg = "An error ocurred during register process. Try again later";
                     }
                 } else {
                     // Weak password
-                    $msg = "Contraseña demasiado débil. Debe cumplir los requisitos especificados";
+                    $msg = "Too weak Password. It must comply the specified requirements";
                 }
             } else {
                 // Existing email
-                $msg = "Ya existe un usuario con este email";
+                $msg = "There is a registered user using this Email";
             }
         } else {
             // Existing username
-            $msg = "Ya existe un usuario con este nombre";
+            $msg = "Ther is a registered user using this Username";
         }
     }
 
     ?>
 
     <form class="form" action="" method="post">
-        <h2 class="login-title">Registro</h2>
-        <input type="text" class="login-input" name="user_name" maxlength="100" placeholder="Nombre de usuario" required autofocus="true"/>
+        <h2 class="login-title">Register</h2>
+        <input type="text" class="login-input" name="user_name" maxlength="100" placeholder="Username" required
+            autofocus="true" />
         <input type="text" class="login-input" name="user_email" maxlength="100" placeholder="Email" required>
-        <input type="password" class="login-input" name="user_password" maxlength="100" placeholder="Contraseña*" required>
-        <p class="info">* La contraseña debe contener mayúsculas, minúsculas, números y algún caracter especial</p>
-        <input type="submit" name="submit" value="Registrarse" class="login-button">
-        <p class="login-link"><a href="login.php" class="login-text-link">Iniciar sesión</a></p>
+        <input type="password" class="login-input" name="user_password" maxlength="100" placeholder="Password*"
+            required>
+        <p class="info">* Password should be at least 8 characters in length and should include at least one upper and
+            one lower case letter, one number, and one special character.</p>
+        <input type="submit" name="submit" value="Register" class="login-button">
+        <p class="login-link"><a href="login.php" class="login-text-link">Login</a></p>
     </form>
-    <?php echo "<p class='msg'>".(isset($msg)?$msg:"")."</p>" ?>
+    <?php echo "<p class='msg'>" . (isset($msg) ? $msg : "") . "</p>" ?>
 
-    <?php include(__DIR__."/view/footer.php")?>
+    <?php include(__DIR__ . "/view/footer.php") ?>
 </body>
 
 </html>

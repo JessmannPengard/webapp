@@ -16,7 +16,7 @@
 <body class="login-body">
 
     <?php
-    require("users.php");
+    include("users.php");
 
     session_start();
 
@@ -25,24 +25,24 @@
         $password = $_POST["user_password"];
         $user_id = authUser($username, $password);
         if ($user_id > 0) {
-            //Usuario autorizado
+            // Authorized user
             $_SESSION['user_name'] = $username;
             $_SESSION['user_id'] = $user_id;
             header("Location: index.php");
         } else {
-            //Combinación usuario-contraseña incorrecta
-            $msg = "Nombre de usuario y/o contraseña no válidos";
+            // Wrong user/password combination
+            $msg = "Username and/or password not valid";
         }
     }
     ?>
 
     <form class="form" method="post" name="login">
         <h2 class="login-title">Login</h2>
-        <input type="text" class="login-input" name="user_name" placeholder="Nombre de usuario" autofocus="true"
+        <input type="text" class="login-input" name="user_name" placeholder="Username" autofocus="true"
             required />
-        <input type="password" class="login-input" name="user_password" placeholder="Contraseña" required />
-        <input type="submit" value="Iniciar sesión" name="submit" class="login-button" />
-        <p class="login-link"><a href="register.php" class="login-text-link">Registrarse</a></p>
+        <input type="password" class="login-input" name="user_password" placeholder="Password" required />
+        <input type="submit" value="Login" name="submit" class="login-button" />
+        <p class="login-link"><a href="register.php" class="login-text-link">Register</a></p>
     </form>
     <?php echo "<p class='msg'>" . (isset($msg) ? $msg : "") . "</p>" ?>
 

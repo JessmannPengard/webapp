@@ -53,7 +53,7 @@ function authUser($userName, $userPassword)
     return $user_id;
 }
 
-function existUser($userName)
+function existUsername($userName)
 {
     include("db.php");
 
@@ -74,6 +74,29 @@ function existUser($userName)
 
     // Return result
     return $result;
+}
+
+function getUsername($id_user)
+{
+    include("db.php");
+
+    // Prepare
+    $stmt = $conn->prepare("SELECT user_name FROM users WHERE id_user = ?");
+    $stmt->bind_param("i", $id_user);
+    $stmt->bind_result($username);
+
+    // Execute
+    $stmt->execute();
+    
+    // Get username
+    $stmt->fetch();
+
+    // Close connection
+    $stmt->close();
+    mysqli_close($conn);
+
+    // Return username
+    return $username;
 }
 
 function existEmail($userEmail)

@@ -1,60 +1,82 @@
+@font-face {
+    font-family: 'Vermin';
+    src: url(../fonts/Vermin.ttf);
+}
+
 body {
     margin: 0;
-    background-color: #90afc5;
+    background-color: black;
+    color: limegreen;
 }
+
 
 .site-header {
-    background-color: #336b87;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    margin: 20px;
 }
 
-.logo {
-    width: 150px;
+.site-nav {
+    display: flex;
+    justify-content: right;
+    border: 2px solid #2a3132;
+    border-radius: 10px;
 }
 
 .site-title {
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
+    margin: 5px auto;
+    text-align: center;
+    color: limegreen;
+    font-family: 'Vermin';
 }
 
 .session {
     display: flex;
     flex-direction: column;
     width: 150px;
+    padding: 10px;
 }
 
 .username {
     font-family: 'Courier New', Courier, monospace;
-    color: #2a3132;
+    color: limegreen;
     font-weight: bolder;
     text-align: center;
 }
 
-.a-logout {
+.a-session {
     text-align: center;
     margin-top: 5px;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    color: #556466;
 }
 
-.logout {
-    color: white;
+.i-session {
+    color: limegreen;
+    margin-left: 5px;
+}
+
+.login-message {
+    text-align: center;
+    color: limegreen;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
 }
 
 .site-footer {
-    background-color: #336b87;
     height: 80px;
+    margin: 20px;
     display: flex;
     flex-direction: column;
+    border: 2px solid #2a3132;
+    border-radius: 10px;
 }
 
 .copyright {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
-    color: #2a3132;
+    color: limegreen;
 }
 
 .rrss {
@@ -63,5 +85,5 @@ body {
 
 .a-rrss {
     margin: 5px;
-    color: white;
+    color: limegreen;
 }

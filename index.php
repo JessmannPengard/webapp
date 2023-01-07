@@ -1,5 +1,5 @@
 <?php
-include("auth_session.php");
+//include("auth_session.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,13 +18,23 @@ include("auth_session.php");
 
 <body>
 
-    <?php include(__DIR__ . "/view/header.php") ?>
+    <?php
+    session_start();
+    include(__DIR__ . "/view/header.php");
+    include(__DIR__ . '/posts.php');
+    ?>
 
-    <?php include(__DIR__ . "/view/new_post.php") ?>
+    <?php
+    if (isset($_SESSION['user_id'])) {
+        include(__DIR__ . "/view/new_post.php");
+    } else {
+        include(__DIR__ . "/view/unregistered_message.php");
+    }
+    ?>
 
-    <?php include(__DIR__ . "/view/view_post.php") ?>
+    <?php include(__DIR__ . "/view/view_posts.php"); ?>
 
-    <?php include(__DIR__ . "/view/footer.php") ?>
+    <?php include(__DIR__ . "/view/footer.php"); ?>
 
 </body>
 

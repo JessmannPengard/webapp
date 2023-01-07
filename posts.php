@@ -57,13 +57,12 @@ function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $po
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param($format, ...$param);
+    // Store in an array
+    $stmt->bind_result($post['id_post'], $post['id_user'], $post['post'], $post['id_parent_post'], $post['post_create_datetime']);
 
     // Execute
     $stmt->execute();
     $stmt->store_result();
-
-    // Store in an array
-    $stmt->bind_result($post['id_post'], $post['id_user'], $post['post'], $post['id_parent_post'], $post['post_create_datetime']);
 
     for ($i = 0; $i < $stmt->num_rows; $i++) {
         $stmt->data_seek($i);
@@ -79,6 +78,19 @@ function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $po
 
     // Return selected posts
     return $result;
+}
+
+function showPost($id_user, $post, $date_time)
+{
+    $username = getUsername($id_user);
+
+    echo "
+        <div class='view-post'>
+            <span><h3 class='user-comment'>" . $username . "</h3></span><span>wrote...</span>
+            <textarea class='text-post' readonly>" . $post . "</textarea>
+            <p>on ". $date_time ."</p>
+        </div>
+    ";
 }
 
 
