@@ -13,11 +13,19 @@
     <title>Register</title>
 </head>
 
-<body class="login-body">
+<body>
 
     <?php
+    // Includes
     include("users.php");
 
+    // Session start
+    session_start();
+
+    // Header view
+    include(__DIR__ . "/view/header.php");
+
+    // Validate inputs an register
     if (isset($_POST["user_name"])) {
         $username = $_POST["user_name"];
         $email = $_POST["user_email"];
@@ -46,9 +54,9 @@
             $msg = "Ther is a registered user using this Username";
         }
     }
-
     ?>
 
+    <!-- Register form -->
     <form class="form" action="" method="post">
         <h2 class="login-title">Register</h2>
         <input type="text" class="login-input" name="user_name" maxlength="100" placeholder="Username" required
@@ -61,9 +69,15 @@
         <input type="submit" name="submit" value="Register" class="login-button">
         <p class="login-link"><a href="login.php" class="login-text-link">Login</a></p>
     </form>
-    <?php echo "<p class='msg'>" . (isset($msg) ? $msg : "") . "</p>" ?>
 
-    <?php include(__DIR__ . "/view/footer.php") ?>
+    <?php
+    // Message from registering process
+    echo "<p class='msg'>" . (isset($msg) ? $msg : "") . "</p>";
+
+    // Footer view
+    include(__DIR__ . "/view/footer.php");
+    ?>
+
 </body>
 
 </html>

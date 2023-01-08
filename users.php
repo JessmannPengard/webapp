@@ -1,5 +1,6 @@
 <?php
 
+// Register new user with specified params
 function userRegister($userName, $userEmail, $userPassword, $dateTime)
 {
     include("db.php");
@@ -22,6 +23,7 @@ function userRegister($userName, $userEmail, $userPassword, $dateTime)
     return $stmt;
 }
 
+// Checks for valid username/password combination and return id_user (0 if not found)
 function authUser($userName, $userPassword)
 {
     include("db.php");
@@ -53,6 +55,7 @@ function authUser($userName, $userPassword)
     return $user_id;
 }
 
+// Checks if the username already exists
 function existUsername($userName)
 {
     include("db.php");
@@ -76,6 +79,7 @@ function existUsername($userName)
     return $result;
 }
 
+// Returns username from id_user
 function getUsername($id_user)
 {
     include("db.php");
@@ -99,6 +103,7 @@ function getUsername($id_user)
     return $username;
 }
 
+// Checks if the Email already exists
 function existEmail($userEmail)
 {
     include("db.php");
@@ -122,9 +127,9 @@ function existEmail($userEmail)
     return $result;
 }
 
+// Validate password strenght
 function validPassword($userPassword)
 {
-    // Validate password strength:
     // Password should be at least 8 characters in length and 
     // should include at least one upper and one lower case letter,
     // one number, and one special character.

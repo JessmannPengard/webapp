@@ -1,5 +1,6 @@
 <?php
 
+// Post publish on POST submit
 if (isset($_POST['post-text'])) {
     $user_id = $_SESSION['user_id'];
     $post = $_POST['post-text'];
@@ -14,6 +15,7 @@ if (isset($_POST['post-text'])) {
     }
 }
 
+// New post form
 echo "
     <div class='div-send-post'>
         <form action='' method='post' class='send-post'>

@@ -1,5 +1,6 @@
 <?php
 
+// Insert new post with specified data in params
 function publishPost($id_user, $text_post, $id_parent_post = 0, $post_datetime)
 {
     include("db.php");
@@ -19,6 +20,8 @@ function publishPost($id_user, $text_post, $id_parent_post = 0, $post_datetime)
     return $stmt;
 }
 
+
+// Get posts with specified conditions in params
 function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $post_datetimeTO = 0)
 {
     include("db.php");
@@ -35,12 +38,12 @@ function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $po
         $format .= "i";
         $param[] = $id_user;
     }
-    if ($id_parent_post != 0) {
-        $sql .= " AND id_parent_post=?";
+   
+    $sql .= " AND id_parent_post=?";
 
-        $format .= "i";
-        $param[] = $id_parent_post;
-    }
+    $format .= "i";
+    $param[] = $id_parent_post;
+
     if ($post_datetimeFROM != 0) {
         $sql .= " AND post_create_datetime>?";
 
@@ -57,13 +60,14 @@ function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $po
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param($format, ...$param);
-    // Store in an array
     $stmt->bind_result($post['id_post'], $post['id_user'], $post['post'], $post['id_parent_post'], $post['post_create_datetime']);
 
     // Execute
     $stmt->execute();
     $stmt->store_result();
 
+    $result = array();
+    // Store rows in an array
     for ($i = 0; $i < $stmt->num_rows; $i++) {
         $stmt->data_seek($i);
         $stmt->fetch();
@@ -76,22 +80,43 @@ function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $po
     $stmt->close();
     mysqli_close($conn);
 
-    // Return selected posts
+    // Return array
     return $result;
 }
 
-function showPost($id_user, $post, $date_time)
+function getComments($id_post)
 {
-    $username = getUsername($id_user);
+    include("db.php");
 
-    echo "
-        <div class='view-post'>
-            <span><h3 class='user-comment'>" . $username . "</h3></span><span>wrote...</span>
-            <textarea class='text-post' readonly>" . $post . "</textarea>
-            <p>on ". $date_time ."</p>
-        </div>
-    ";
+    // Prepare
+    $format = "i";
+    $param = array();
+
+    $sql = "SELECT * FROM posts WHERE id_parent_post=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id_post);
+    $stmt->bind_result($post['id_post'], $post['id_user'], $post['post'], $post['id_parent_post'], $post['post_create_datetime']);
+
+    // Execute
+    $stmt->execute();
+    $stmt->store_result();
+
+    $result = array();
+    // Store rows in an array
+    for ($i = 0; $i < $stmt->num_rows; $i++) {
+        $stmt->data_seek($i);
+        $stmt->fetch();
+        foreach ($post as $key => $value) {
+            $result[$i][$key] = $value;
+        }
+    }
+
+    // Close connection
+    $stmt->close();
+    mysqli_close($conn);
+
+    // Return array
+    return $result;
 }
-
 
 ?>

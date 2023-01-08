@@ -13,13 +13,19 @@
     <title>Login</title>
 </head>
 
-<body class="login-body">
+<body>
 
     <?php
+    // Includes
     include("users.php");
 
+    // Session start
     session_start();
 
+    // Header view
+    include(__DIR__ . "/view/header.php");
+
+    // Check credentials on POST submit
     if (isset($_POST["user_name"])) {
         $username = $_POST["user_name"];
         $password = $_POST["user_password"];
@@ -36,17 +42,22 @@
     }
     ?>
 
+    <!-- Login form -->
     <form class="form" method="post" name="login">
         <h2 class="login-title">Login</h2>
-        <input type="text" class="login-input" name="user_name" placeholder="Username" autofocus="true"
-            required />
+        <input type="text" class="login-input" name="user_name" placeholder="Username" autofocus="true" required />
         <input type="password" class="login-input" name="user_password" placeholder="Password" required />
         <input type="submit" value="Login" name="submit" class="login-button" />
         <p class="login-link"><a href="register.php" class="login-text-link">Register</a></p>
     </form>
-    <?php echo "<p class='msg'>" . (isset($msg) ? $msg : "") . "</p>" ?>
 
-    <?php include(__DIR__ . "/view/footer.php") ?>
+    <?php
+    // Error message if wrong user/password combination
+    echo "<p class='msg'>" . (isset($msg) ? $msg : "") . "</p>";
+
+    // Footer view
+    include(__DIR__ . "/view/footer.php");
+    ?>
 </body>
 
 </html>

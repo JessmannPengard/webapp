@@ -29,6 +29,18 @@
     border: 0px;
     height: 30px;
     border-radius: 0 0 10px 10px;
+    cursor: pointer;
+}
+
+.div-posts{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .user-comment {
@@ -41,11 +53,18 @@
     color: dimgray;
     border: 2px solid #2a3132;
     border-radius: 10px;
+    background-color: black;
     margin: 10px auto;
-    padding: 20px;
-    width: 60%;
+    padding: 10px;
+    width: 335px;
     display: flex;
     flex-direction: column;
+}
+
+.post-datetime {
+    margin: 5px 10px;
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .text-post {
@@ -53,9 +72,45 @@
     width: 300px;
     resize: none;
     border: 1px solid #2a3132;
-    border-radius: 10px 0 10px 0;
+    border-radius: 10px 10px 0 0;
     padding: 5px;
     color: rgb(155, 155, 155);
     background-color: rgb(21, 21, 21);
-    margin: 5px auto;
+    margin: 0 auto;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-post {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #2a3132;
+    color: limegreen;
+    border: 0px;
+    border-radius: 0 0 10px 10px;
+    height: 30px;
+    width: 100px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.num-comments {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: right;
+    font-size: 12px;
+    color: dimgray;
+}
+
+.post-id {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: right;
+    font-size: 12px;
+}
+
+.post-icon {
+    margin-left: 5px;
+    color: limegreen;
 }

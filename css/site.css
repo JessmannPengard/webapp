@@ -6,6 +6,7 @@
 body {
     margin: 0;
     background-color: black;
+    background-image: url(../img/background.jpg);
     color: limegreen;
 }
 
@@ -17,14 +18,18 @@ body {
 
 .site-nav {
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
+    align-items: center;
     border: 2px solid #2a3132;
     border-radius: 10px;
+    height: 80px;
+    padding: 0 20px;
 }
 
 .site-title {
-    margin: 5px auto;
+    margin: 0 auto;
     text-align: center;
+    font-size: 40px;
     color: limegreen;
     font-family: 'Vermin';
 }
@@ -32,8 +37,6 @@ body {
 .session {
     display: flex;
     flex-direction: column;
-    width: 150px;
-    padding: 10px;
 }
 
 .username {
