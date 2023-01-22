@@ -1,0 +1,40 @@
+.nav-h {
+    background-color: #415F69;
+    display: flex;
+    padding: 5px 0;
+}
+
+.nav-b {
+    background-color: #415F69;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.logo {
+    height: 80px;
+    text-align: center;
+}
+
+.btn {
+    background-color: #415F69;
+    border: none;
+}
+
+.copyright {
+    font-size: 12px;
+}
+
+.container {
+    margin-top: 120px;
+    margin-bottom: 80px;
+}
+
+.form-title{
+    text-align: center;
+}
+
+.form-link{
+    color: #C64E52;
+}
