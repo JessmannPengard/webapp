@@ -13,7 +13,7 @@
     padding-top: 10px;
 }
 
-.left-nav{
+.left-nav {
     text-align: left;
     padding-left: 20px;
 }
@@ -22,21 +22,21 @@
     height: 80px;
 }
 
-.nav-link{
+.nav-link {
     width: 33.33%;
 }
 
-.copyright{
+.copyright {
     font-size: 12px;
 }
 
-.login-message{
+.login-message {
     text-align: center;
     padding: 10px 0;
     font-size: 12px;
 }
 
-.a-session{
+.a-session {
     color: #C64E52;
 }
 
@@ -45,11 +45,15 @@
     margin-bottom: 80px;
 }
 
+article {
+    margin-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+}
 .user-post {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 10px 10px;
 }
 
 .user-name {
@@ -67,9 +71,7 @@
 }
 
 .post-comments {
-    margin-bottom: 20px;
-    text-align: right;
-    border-bottom: 1px solid lightgray;
+    text-align: center;
 }
 
 .img-comment {
@@ -77,9 +79,16 @@
     color: #415F69;
 }
 
-.dots {
+.optsPosts{
+    display: flex;
+    flex-direction: row;
+    border: none;
     text-align: right;
+}
+
+.optPost{
     color: #415F69;
+    padding-left: 10px;
 }
 
 /* Floating + button*/
@@ -111,6 +120,7 @@
     height: 60px;
     background: #C64E52;
 }
+
 /* ------------------- */
 
 /* Offcanvas: user menu */
@@ -141,4 +151,5 @@
     background-color: #415F69;
     border: none;
 }
+
 /* ------------------- */

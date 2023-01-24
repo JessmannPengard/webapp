@@ -40,6 +40,7 @@ class LoginController extends Controller
     public function logout()
     {
         session_start();
+        session_unset();
         session_destroy();
         header("Location: " . URL_PATH . "/login");
     }

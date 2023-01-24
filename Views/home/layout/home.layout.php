@@ -29,7 +29,7 @@
             <div class="nav-link left-nav">
                 <a class="text-white" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
                     aria-controls="offcanvasWithBothOptions">
-                    <i class="fa-solid fa-user fa-xl"></i>
+                    <i class="fa-solid fa-bars fa-xl"></i>
                 </a>
             </div>
 
