@@ -8,21 +8,6 @@ class Post extends Orm
         parent::__construct("id_post", "posts", $conn);
     }
 
-    // Insert new post with specified data in params
-    public function publishPost($id_user, $text_post, $id_parent_post = 0, $post_datetime)
-    {
-        // Prepare
-        $stmt = $this->dbconn->prepare("INSERT INTO posts (id_user,post,id_parent_post,post_create_datetime) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isis", $id_user, $text_post, $id_parent_post, $post_datetime);
-
-        // Execute
-        $stmt->execute();
-
-        // True if execute was succesfully, else False
-        return $stmt;
-    }
-
-
     // Get posts with specified conditions in params
     public function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $post_datetimeTO = 0)
     {

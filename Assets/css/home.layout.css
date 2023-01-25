@@ -91,6 +91,16 @@ article {
     padding-left: 10px;
 }
 
+.send-post{
+    display: flex;
+    flex-direction: column;
+}
+.input-post{
+    height: 200px;
+    width: 100%;
+    resize: none;
+}
+
 /* Floating + button*/
 .fab-container {
     position: fixed;
@@ -113,6 +123,10 @@ article {
     justify-content: center;
     height: 100%;
     color: white;
+}
+
+.iconbutton a{
+    text-decoration: none;
 }
 
 .button {

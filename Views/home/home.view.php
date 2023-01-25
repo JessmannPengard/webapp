@@ -20,8 +20,8 @@
       // Show options button only on user posts
       if (isset($_SESSION["user_name"]) && $_SESSION["user_name"] == $posts[$key]["user_name"]) {
         echo "    <div class='optPosts'>
-                        <a href='' class='optPost' id='edit" . $posts[$key]["id_post"] . "'> <i class='fa-solid fa-pen-to-square'></i></a>
-                        <a href='' class='optPost' id='del" . $posts[$key]["id_post"] . "'> <i class='fa-sharp fa-solid fa-trash-can'></i></a>
+                        <a href='" . URL_PATH . "/home/editpost?" . $posts[$key]["id_post"] . "' class='optPost'> <i class='fa-solid fa-pen-to-square'></i></a>
+                        <a href='" . URL_PATH . "/home/deletepost?" . $posts[$key]["id_post"] . "' class='optPost'> <i class='fa-sharp fa-solid fa-trash-can'></i></a>
                   </div>";
       }
       echo "</div>
@@ -40,7 +40,7 @@
     if (isset($_SESSION["user_name"])) {
       echo "<div class='fab-container'>
             <div class='button iconbutton'>
-              <i class='fa-solid fa-plus'></i>
+              <a href='" . URL_PATH . "/home/newpost'><i class='fa-solid fa-plus'></i></a>
             </div>
           </div";
     }

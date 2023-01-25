@@ -30,7 +30,7 @@ class Orm
 
     public function getAllButId($id)
     {
-        $stm = $this->dbconn->prepare("SELECT * FROM {$this->table} WHERE id!=:id");
+        $stm = $this->dbconn->prepare("SELECT * FROM {$this->table} WHERE {$this->id}!=:id");
         $stm->bindValue(":id", $id);
         $stm->execute();
         return $stm->fetchAll();
@@ -38,7 +38,7 @@ class Orm
 
     public function deleteById($id)
     {
-        $stm = $this->dbconn->prepare("DELETE FROM {$this->table} WHERE id=:id");
+        $stm = $this->dbconn->prepare("DELETE FROM {$this->table} WHERE {$this->id}=:id");
         $stm->bindValue(":id", $id);
         $stm->execute();
     }
@@ -71,7 +71,7 @@ class Orm
             $sql .= "{$key}=:{$key},";
         }
         $sql = substr($sql, 0, -1);
-        $sql .= " WHERE Id=:id";
+        $sql .= " WHERE {$this->id}=:id";
 
         $stm = $this->dbconn->prepare($sql);
         foreach ($data as $key => $value) {

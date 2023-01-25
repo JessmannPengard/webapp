@@ -76,7 +76,11 @@
         <!-- Sign in message -->
         <?php
         if (!isset($_SESSION["user_name"])) {
-            require_once(__DIR__ . "/../../../Views/home/signinMessage.view.php");
+            echo "
+                    <p class='login-message'>
+                        <a href='" . URL_PATH . "/login' class='a-session'>Login</a> or 
+                        <a href='" . URL_PATH . "/login/register' class='a-session'>Register</a> so you can publish or comment.
+                    </p>";
         }
         ?>
         <div class="row">
