@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-01-2023 a las 13:08:20
+-- Tiempo de generación: 01-02-2023 a las 11:50:53
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -33,6 +33,7 @@ CREATE TABLE `posts` (
   `post` varchar(255) NOT NULL,
   `id_parent_post` int(11) NOT NULL DEFAULT 0,
   `post_create_datetime` datetime NOT NULL,
+  `post_edit_datetime` datetime DEFAULT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
