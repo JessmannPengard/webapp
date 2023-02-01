@@ -9,7 +9,7 @@ class Post extends Orm
     }
 
     // Get posts with specified conditions in params
-    public function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $post_datetimeTO = 0)
+    public function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $post_datetimeTO = 0, $deleted=0)
     {
         // Prepare
         $sql = "SELECT P.id_post, U.user_name, P.post, P.post_create_datetime, P.post_edit_datetime, P.id_parent_post
@@ -38,6 +38,9 @@ class Post extends Orm
             $param[] = $post_datetimeFROM;
         }
 
+        $sql .= " AND P.deleted=:deleted";
+        $param[] = $deleted;
+
         $sql .= " ORDER BY P.post_create_datetime DESC";
 
         $stm = $this->dbconn->prepare($sql);
@@ -54,12 +57,31 @@ class Post extends Orm
         if ($post_datetimeTO) {
             $stm->bindValue(":post_create_datetimeTo", $post_datetimeTO);
         }
+        $stm->bindValue(":deleted", $deleted);
 
         // Execute
         $stm->execute();
 
         // True if found, else False
         return $stm->fetchAll();
+    }
+
+    public function deletePost($id, $data)
+    {
+        $sql = "UPDATE posts SET ";
+
+        foreach ($data as $key => $value) {
+            $sql .= "{$key}=:{$key},";
+        }
+        $sql = substr($sql, 0, -1);
+        $sql .= " WHERE id_post=:id";
+
+        $stm = $this->dbconn->prepare($sql);
+        foreach ($data as $key => $value) {
+            $stm->bindValue(":{$key}", $value);
+        }
+        $stm->bindValue(":id", $id);
+        $stm->execute();
     }
 
 }
