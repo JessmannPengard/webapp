@@ -95,6 +95,18 @@ article {
     display: flex;
     flex-direction: column;
 }
+
+.discard-post{
+    border: 1px solid black;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(184, 158, 158);
+    margin-top: 10px;
+    padding: 2px;
+}
+
 .input-post{
     height: 200px;
     width: 100%;

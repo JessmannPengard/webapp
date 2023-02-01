@@ -22,7 +22,7 @@ class Orm
 
     public function getById($id)
     {
-        $stm = $this->dbconn->prepare("SELECT * FROM {$this->table} WHERE id=:id");
+        $stm = $this->dbconn->prepare("SELECT * FROM {$this->table} WHERE {$this->id}=:id");
         $stm->bindValue(":id", $id);
         $stm->execute();
         return $stm->fetch();

@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
   }
 
 if (!isset($_SESSION["id_user"])) {
-    header("Location: " . URL_PATH . "/login");
+    header("Location: /login");
     exit();
 }
 ?>

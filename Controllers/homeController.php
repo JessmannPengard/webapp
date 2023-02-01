@@ -42,4 +42,37 @@ class HomeController extends Controller
         }
     }
 
+    public function editpost()
+    {
+        $req_url = explode("?", $_SERVER['REQUEST_URI']);
+        $id_post = $req_url[1];
+
+        if (isset($_POST['post-text'])) {
+            $user_id = $_SESSION['id_user'];
+            $post = $_POST['post-text'];
+            // Edit post
+            $db = new Database;
+            $post = new Post($db->getConnection());
+            $data = array();
+            $data["post"] = $_POST["post-text"];
+            $data["post_edit_datetime"] = date('Y-m-d H:i:s');
+            $post->updateById($id_post, $data);
+            header("Location: " . URL_PATH . "/home");
+            exit();
+        } else {
+            // Check for session to alow edit
+            include(__DIR__ . "/../auth_session.php");
+            // Check for post owner
+            $db = new Database;
+            $post = new Post($db->getConnection());
+            $data = array();
+            $result = $post->getById($id_post);
+            if ($result && $result["id_user"] == $_SESSION['id_user']) {
+                $this->render("home/editPost", $result, "home/layout/home");
+            } else{
+                header("Location: " . URL_PATH . "/home");
+            }
+        }
+    }
+
 }
