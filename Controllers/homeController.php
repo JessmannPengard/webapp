@@ -7,7 +7,6 @@ class HomeController extends Controller
     {
         $db = new Database;
         $post = new Post($db->getConnection());
-        $this->posts = $post->getAll();
         $this->posts = $post->getPosts();
     }
 

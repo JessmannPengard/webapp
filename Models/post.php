@@ -12,7 +12,7 @@ class Post extends Orm
     public function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $post_datetimeTO = 0)
     {
         // Prepare
-        $sql = "SELECT P.id_post, U.user_name, P.post, P.post_create_datetime, P.id_parent_post
+        $sql = "SELECT P.id_post, U.user_name, P.post, P.post_create_datetime, P.post_edit_datetime, P.id_parent_post
         FROM posts as P INNER JOIN users as U ON
         P.id_user=U.id_user WHERE 1=1 ";
 

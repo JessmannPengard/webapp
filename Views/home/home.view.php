@@ -9,14 +9,23 @@
       $nowDate = new DateTime("now");
       $time = format_interval_dates_short($nowDate, $postDate);
       //-------------
+      // Format edit time
+      if ($posts[$key]["post_edit_datetime"] != null) {
+        $postEditDate = new DateTime($posts[$key]["post_edit_datetime"]);
+        $editTime = format_interval_dates_short($nowDate, $postEditDate);
+      }
+      //-------------
     
       // Show post
       echo "<article>
               <div class='user-post'>
                 <div>
                   <span class='user-name'>" . $posts[$key]["user_name"] . "</span>
-                  <span class='post-date'> · " . $time . "</span>
-                </div>";
+                  <span class='post-date'> · " . $time . "</span>";
+      if ($posts[$key]["post_edit_datetime"] != null) {
+        echo "<span class='post-date'> · edited " . $editTime . "</span>";
+      }
+      echo "  </div>";
       // Show options button only on user posts
       if (isset($_SESSION["user_name"]) && $_SESSION["user_name"] == $posts[$key]["user_name"]) {
         echo "    <div class='optPosts'>
