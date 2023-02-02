@@ -18,6 +18,33 @@ class HomeController extends Controller
         $this->render("home/home", $params, "home/layout/home");
     }
 
+    public function viewpost()
+    {
+        $req_url = explode("?", $_SERVER['REQUEST_URI']);
+        $id_post = $req_url[1];
+
+        if (isset($_POST['post-text'])) {
+            /* Comment logic
+            
+            ** TODO **
+            
+            */
+        } else {
+            // Get post
+            $db = new Database;
+            $post = new Post($db->getConnection());
+            $result = array();
+            $result['id_post'] = $post->getById($id_post);
+            if ($result['id_post']) {
+                $this->render("home/viewPost", $result, "home/layout/home");
+            } else {
+                $params = array();
+                $params["posts"] = $this->posts;
+                header("Location: " . URL_PATH . "/home");
+            }
+        }
+    }
+
     public function newpost()
     {
         if (isset($_POST['post-text'])) {
@@ -67,7 +94,7 @@ class HomeController extends Controller
             $result = $post->getById($id_post);
             if ($result && $result["id_user"] == $_SESSION['id_user']) {
                 $this->render("home/editPost", $result, "home/layout/home");
-            } else{
+            } else {
                 header("Location: " . URL_PATH . "/home");
             }
         }
@@ -98,10 +125,9 @@ class HomeController extends Controller
             $result = $post->getById($id_post);
             if ($result && $result["id_user"] == $_SESSION['id_user']) {
                 $this->render("home/deletePost", $result, "home/layout/home");
-            } else{
+            } else {
                 header("Location: " . URL_PATH . "/home");
             }
         }
     }
-
 }
