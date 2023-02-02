@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="<?= URL_PATH ?>/assets/css/login.layout.css">
     <!-- Page title -->
     <title>Jessmann</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="<?= URL_PATH ?>/assets/img/favicon.ico">
 </head>
 
 <body>

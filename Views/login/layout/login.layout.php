@@ -17,9 +17,12 @@
         crossorigin="anonymous"></script>
     <!-- Styles -->
     <link rel="stylesheet" href="<?= URL_PATH ?>/assets/css/login.layout.css">
+    <!-- Script -->
     <script src="<?= URL_PATH ?>/assets/js/register.js"></script>
     <!-- Page title -->
     <title>Jessmann</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="<?= URL_PATH ?>/assets/img/favicon.ico">
 </head>
 
 <body>
