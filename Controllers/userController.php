@@ -1,29 +1,33 @@
 <?php
 
-class UserController extends Controller{
+class UserController extends Controller
+{
 
-    public function index(){
-        if (isset($_POST["user"])) {
+    public function index()
+    {
+        if (isset($_POST["email"]) || isset($_POST["password"])) {
+            $db = new Database;
+            $user = new User($db->getConnection());
+            $id_user = $_SESSION["id_user"];
+            $data = array();
+            $data["user_email"] = $_POST["email"];
+            if (isset($_POST["password"])) {
+                $data["user_password"] = md5($_POST["password"]);
+            }
+            $user->updateById($id_user, $data);
+            header("Location: " . URL_PATH . "/home");
+        } else {
             $db = new Database;
             $user = new User($db->getConnection());
 
-            $username = $_POST["user"];
-            $password = $_POST["password"];
-            $data = $user->login($username, $password);
-            if ($data) {
-                session_start();
-                $_SESSION["id_user"] = $data["id_user"];
-                $_SESSION["user_name"] = $data["user_name"];
-                header("Location: " . URL_PATH . "/home");
-                exit;
-            } else {
-                $params["error"] = "Wrong user/password combination";
-            }
+            $id_user = $_SESSION["id_user"];
+            $data = $user->getById($id_user);
+            $this->render("user/user", $data, "user/layout/user");
         }
-        $this->render("user/user", isset($params) ? $params : [null], "user/layout/user");
     }
 
-    public function watch(){
+    public function watch()
+    {
         $this->render("user/watch", isset($params) ? $params : [null], "user/layout/user");
     }
 }
