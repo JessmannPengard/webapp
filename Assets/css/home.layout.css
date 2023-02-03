@@ -45,10 +45,11 @@
     margin-bottom: 80px;
 }
 
-article {
+.article-post {
     margin-bottom: 10px;
     border-bottom: 1px solid lightgray;
 }
+
 .user-post {
     width: 100%;
     display: flex;
@@ -56,7 +57,19 @@ article {
     padding: 10px 10px;
 }
 
+.user-comment {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 25px;
+}
+
 .user-name {
+    font-weight: bold;
+}
+
+.user-name-comment {
+    font-size: 13px;
     font-weight: bold;
 }
 
@@ -65,9 +78,20 @@ article {
     font-size: 12px;
 }
 
+.comment-date {
+    color: #415F69;
+    font-size: 11px;
+}
+
 .post-text {
     padding-left: 10px;
     margin-bottom: 5px;
+}
+
+.comment-text {
+    padding-left: 25px;
+    margin-bottom: 5px;
+    font-size: 13px;
 }
 
 .post-comments {
@@ -79,24 +103,24 @@ article {
     color: #415F69;
 }
 
-.optsPosts{
+.optsPosts {
     display: flex;
     flex-direction: row;
     border: none;
     text-align: right;
 }
 
-.optPost{
+.optPost {
     color: #415F69;
     padding-left: 10px;
 }
 
-.send-post{
+.send-post {
     display: flex;
     flex-direction: column;
 }
 
-.discard-post{
+.discard-post {
     border: 1px solid black;
     border-radius: 3px;
     text-align: center;
@@ -107,7 +131,7 @@ article {
     padding: 2px;
 }
 
-.input-post{
+.input-post {
     height: 200px;
     width: 100%;
     resize: none;
@@ -137,7 +161,7 @@ article {
     color: white;
 }
 
-.iconbutton a{
+.iconbutton a {
     text-decoration: none;
 }
 

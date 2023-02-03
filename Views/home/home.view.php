@@ -17,7 +17,7 @@
       //-------------
     
       // Show post
-      echo "<article>
+      echo "<article class='article-post'>
               <div class='user-post'>
                 <div>
                   <span class='user-name'>" . $posts[$key]["user_name"] . "</span>
@@ -39,7 +39,7 @@
       $post = new Post($db->getConnection());
       // Get number of comments for each post and show
       $comments = $post->getPosts(0, $posts[$key]["id_post"]);
-      echo "<p class='post-comments'>" . count($comments) . "<i class='fa-regular fa-comment img-comment'></i></p>
+      echo "<p class='post-comments'>" . count($comments) . "<a href='" . URL_PATH . "/home/viewpost?" . $posts[$key]["id_post"] . "' class='optPost'><i class='fa-regular fa-comment img-comment'></i></a></p>
             </article>";
     }
     ?>

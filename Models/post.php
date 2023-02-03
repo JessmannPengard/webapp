@@ -9,7 +9,7 @@ class Post extends Orm
     }
 
     // Get posts with specified conditions in params
-    public function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $post_datetimeTO = 0, $deleted=0)
+    public function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $post_datetimeTO = 0, $deleted = 0)
     {
         // Prepare
         $sql = "SELECT P.id_post, U.user_name, P.post, P.post_create_datetime, P.post_edit_datetime, P.id_parent_post
@@ -23,10 +23,8 @@ class Post extends Orm
             $param[] = $id_user;
         }
 
-        if ($id_parent_post != 0) {
-            $sql .= " AND P.id_parent_post=:id_parent_post";
-            $param[] = $id_parent_post;
-        }
+        $sql .= " AND P.id_parent_post=:id_parent_post";
+        $param[] = $id_parent_post;
 
         if ($post_datetimeFROM != 0) {
             $sql .= " AND P.post_create_datetime>=:post_create_datetimeFrom";
@@ -48,9 +46,9 @@ class Post extends Orm
         if ($id_user != 0) {
             $stm->bindValue(":id_user", $id_user);
         }
-        if ($id_parent_post != 0) {
-            $stm->bindValue(":id_parent_post", $id_parent_post);
-        }
+
+        $stm->bindValue(":id_parent_post", $id_parent_post);
+
         if ($post_datetimeFROM != 0) {
             $stm->bindValue(":post_create_datetimeFrom", $post_datetimeFROM);
         }

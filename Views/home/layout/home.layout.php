@@ -37,7 +37,8 @@
 
             <!-- Logo -->
             <div class="nav-link">
-                <img src="<?= URL_PATH ?>/assets/img/logo.png" alt="" srcset="" class="logo">
+            <a href="<?= URL_PATH ?>/home"><img src="<?= URL_PATH ?>/assets/img/logo.png" alt="" srcset=""
+                        class="logo"></a>
             </div>
 
             <!-- Future right menu -->

@@ -24,22 +24,27 @@ class HomeController extends Controller
         $id_post = $req_url[1];
 
         if (isset($_POST['post-text'])) {
-            /* Comment logic
-            
-            ** TODO **
-            
-            */
+            $post = $_POST['post-text'];
+            // Publish post
+            $db = new Database;
+            $post = new Post($db->getConnection());
+            $data = array();
+            $data["id_user"] = $_SESSION["id_user"];
+            $data["id_parent_post"] = $id_post;
+            $data["post"] = $_POST["post-text"];
+            $data["post_create_datetime"] = date('Y-m-d H:i:s');
+            $post->insert($data);
+            header("Location: " . URL_PATH . "/home/viewPost?" . $id_post);
+            exit();
         } else {
             // Get post
             $db = new Database;
             $post = new Post($db->getConnection());
             $result = array();
-            $result['id_post'] = $post->getById($id_post);
-            if ($result['id_post']) {
+            $result = $post->getById($id_post);
+            if ($result) {
                 $this->render("home/viewPost", $result, "home/layout/home");
             } else {
-                $params = array();
-                $params["posts"] = $this->posts;
                 header("Location: " . URL_PATH . "/home");
             }
         }
