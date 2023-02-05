@@ -11,7 +11,7 @@ class UserController extends Controller
             $id_user = $_SESSION["id_user"];
             $data = array();
             $data["user_email"] = $_POST["email"];
-            if (isset($_POST["password"])) {
+            if (isset($_POST["password"]) && $_POST["password"] != "") {
                 $data["user_password"] = md5($_POST["password"]);
             }
             $user->updateById($id_user, $data);
@@ -28,6 +28,29 @@ class UserController extends Controller
 
     public function watch()
     {
-        $this->render("user/watch", isset($params) ? $params : [null], "user/layout/user");
+        $data = array();
+
+        // Get id_user
+        $req_url = explode("?", $_SERVER['REQUEST_URI']);
+        $id_user = $req_url[1];
+
+        // Get username and user create dateTime
+        $db = new Database;
+        $user = new User($db->getConnection());
+        $u = $user->getById($id_user);
+        $data["username"] = $u["user_name"];
+        $data["user_create_datetime"] = $u["user_create_datetime"];
+
+        // Get number of posts
+        $posts = new Post($db->getConnection());
+        $p = $posts->getPosts($id_user);
+        $data["numPosts"] = count($p);
+
+        // Get number of comments
+        $comm = new Post($db->getConnection());
+        $c = $comm->getCommentsByIdUser($id_user);
+        $data["numComments"] = count($c);
+
+        $this->render("user/watch", $data, "user/layout/user");
     }
 }

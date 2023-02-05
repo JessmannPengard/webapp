@@ -17,7 +17,7 @@ $username = $user->getById($parameters["id_user"]);
 echo "<article>
 <div class='user-post'>
   <div>
-    <span class='user-name'>" . $username["user_name"] . "</span>
+    <a href='" . URL_PATH . "/user/watch?" . $username["id_user"] . "' class='a-username'><span class='user-name'>" . $username["user_name"] . "</span></a>
     <span class='post-date'> · " . $time . "</span>";
 if ($parameters["post_edit_datetime"] != null) {
     echo "<span class='post-date'> · edited " . $editTime . "</span>";
@@ -70,7 +70,7 @@ foreach ($comments["comments"] as $key => $value) {
     // Show comment
     echo "<div class='user-comment'>
               <div>
-                <span class='user-name-comment'>" . $comments["comments"][$key]["user_name"] . "</span>
+                <a href='" . URL_PATH . "/user/watch?" .$comments["comments"][$key]["id_user"] . "' class='a-username-comment'><span class='user-name'>" . $comments["comments"][$key]["user_name"] . "</span></a>
                 <span class='comment-date'> · " . $time . "</span>";
     if ($comments["comments"][$key]["post_edit_datetime"] != null) {
         echo "<span class='comment-date'> · edited " . $editTime . "</span>";

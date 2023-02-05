@@ -22,7 +22,6 @@ class LoginController extends Controller
             }
         }
         $this->render("login/login", isset($params) ? $params : [null], "login/layout/login");
-
     }
 
     public function register()
@@ -30,9 +29,13 @@ class LoginController extends Controller
         if (isset($_POST["user"])) {
             $db = new Database;
             $user = new User($db->getConnection());
-            $user->register($_POST["user"], $_POST["password"], $_POST["email"]);
-            header("Location: " . URL_PATH . "/login");
-            exit;
+            $result = $user->register($_POST["user"], $_POST["password"], $_POST["email"]);
+            if ($result["result"]) {
+                header("Location: " . URL_PATH . "/login");
+                exit;
+            } else {
+                $this->render("login/register", $result, "login/layout/login");
+            }
         }
         $this->render("login/register", [null], "login/layout/login");
     }

@@ -16,12 +16,13 @@
         </div>
         <div class="mb-3">
             <label for="c_password" class="form-label">Repeat password</label>
-            <input type="password" name="c_password" id="c-password" class="form-control" required
-                placeholder="Repeat password">
+            <input type="password" name="c_password" id="c-password" class="form-control" required placeholder="Repeat password">
         </div>
         <!-- Error message -->
         <div class="mb-3">
-            <p class="error-text" id="error"></p>
+            <p class="error-text" id="error"><?php if (isset($parameters["msg"])) {
+                                                    echo $parameters["msg"];
+                                                } ?></p>
         </div>
         <div class="mb-3">
             <button type="submit" value="Login" class="btn btn-primary">Register</button>

@@ -8,11 +8,25 @@ class Post extends Orm
         parent::__construct("id_post", "posts", $conn);
     }
 
+    // Get comments from User
+    public function getCommentsByIdUser($id_user)
+    {
+        // Prepare
+        $stm = $this->dbconn->prepare("SELECT * FROM posts WHERE id_user=:id_user AND id_parent_post <> 0");
+        $stm->bindValue(":id_user", $id_user);
+
+        // Execute
+        $stm->execute();
+
+        // Return comments from user
+        return $stm->fetchAll();
+    }
+
     // Get posts with specified conditions in params
     public function getPosts($id_user = 0, $id_parent_post = 0, $post_datetimeFROM = 0, $post_datetimeTO = 0, $deleted = 0)
     {
         // Prepare
-        $sql = "SELECT P.id_post, U.user_name, P.post, P.post_create_datetime, P.post_edit_datetime, P.id_parent_post
+        $sql = "SELECT P.id_post, P.id_user, U.user_name, P.post, P.post_create_datetime, P.post_edit_datetime, P.id_parent_post
         FROM posts as P INNER JOIN users as U ON
         P.id_user=U.id_user WHERE 1=1 ";
 
@@ -81,6 +95,4 @@ class Post extends Orm
         $stm->bindValue(":id", $id);
         $stm->execute();
     }
-
 }
-?>

@@ -29,6 +29,19 @@ class User extends Orm
 
     public function register($userName, $userPassword, $userEmail)
     {
+        $result = array();
+
+        if ($this->existUsername($userName)) {
+            $result["result"] = false;
+            $result["msg"] = "This UserName is already in use.";
+            return $result;
+        }
+        if ($this->existEmail($userEmail)) {
+            $result["result"] = false;
+            $result["msg"] = "This Email is already in use.";
+            return $result;
+        }
+
         // Encrypt password
         $pw = md5($userPassword);
 
@@ -42,6 +55,8 @@ class User extends Orm
 
         // Execute
         $stm->execute();
+        $result["result"] = true;
+        return $result;
     }
 
     // Checks if the username already exists
@@ -91,4 +106,3 @@ class User extends Orm
         return $username;
     }
 }
-?>

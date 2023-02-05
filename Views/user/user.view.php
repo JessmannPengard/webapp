@@ -15,8 +15,7 @@
         </div>
         <div class="mb-3">
             <label for="c_password" class="form-label">Repeat password</label>
-            <input type="password" name="c_password" id="c-password" class="form-control" 
-                placeholder="Repeat password">
+            <input type="password" name="c_password" id="c-password" class="form-control" placeholder="Repeat password">
         </div>
         <!-- Error message -->
         <div class="mb-3">
@@ -24,6 +23,7 @@
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Save changes</button>
+            <a href='<?php echo URL_PATH ?>/home' class='btn btn-danger'>Discard</a>
         </div>
     </form>
 </section>

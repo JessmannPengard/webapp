@@ -17,11 +17,6 @@
     text-align: center;
 }
 
-.btn {
-    background-color: #415F69;
-    border: none;
-}
-
 .copyright {
     font-size: 12px;
 }
@@ -36,5 +31,9 @@
 }
 
 .form-link{
+    color: #C64E52;
+}
+
+.error-text{
     color: #C64E52;
 }

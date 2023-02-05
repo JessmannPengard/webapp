@@ -8,8 +8,10 @@ echo "
             <div class='mb-3'>
                 <textarea name='post-text' id='' maxlength='255' class='input-post' readonly>" . $parameters["post"] . "</textarea>
             </div>
-            <input type='submit' value='Delete' class='submit-post'>
-            <a href='" . URL_PATH . "/home' class='discard-post'>Cancel</a>
+            <div class='mb-3'>
+                <button type='submit' class='btn btn-primary'>Delete</button>
+                <a href='" . URL_PATH . "/home' class='btn btn-danger'>Cancel</a>
+            </div>
         </form>
     </div>
 ";

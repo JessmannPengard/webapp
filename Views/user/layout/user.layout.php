@@ -16,7 +16,7 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <!-- Styles -->
-    <link rel="stylesheet" href="<?= URL_PATH ?>/assets/css/login.layout.css">
+    <link rel="stylesheet" href="<?= URL_PATH ?>/assets/css/home.layout.css">
     <!-- Script -->
     <script src="<?= URL_PATH ?>/assets/js/register.js"></script>
     <!-- Page title -->
@@ -26,20 +26,68 @@
 </head>
 
 <body>
-
     <!-- Header -->
     <header>
-        <nav class="nav nav-fill fixed-top nav-h align-items-center">
+        <nav class="nav fixed-top nav-h align-items-center">
+            <!-- User menu button -->
+            <div class="nav-link left-nav">
+                <a class="text-white" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+                    aria-controls="offcanvasWithBothOptions">
+                    <i class="fa-solid fa-bars fa-xl"></i>
+                </a>
+            </div>
+
             <!-- Logo -->
             <div class="nav-link">
-                <a href="<?= URL_PATH ?>/home"><img src="<?= URL_PATH ?>/assets/img/logo.png" alt="" srcset=""
+            <a href="<?= URL_PATH ?>/home"><img src="<?= URL_PATH ?>/assets/img/logo.png" alt="" srcset=""
                         class="logo"></a>
+            </div>
+
+            <!-- Future right menu -->
+            <div class="nav-link">
+
+            </div>
+
+            <!-- User menu -->
+            <div class="offcanvas offcanvas-start offcanvas-size-sm" data-bs-scroll="true" tabindex="-1"
+                id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                <?php
+                if (isset($_SESSION["user_name"])) {
+                    echo "<div class='offcanvas-header'>
+                            <h5 class='offcanvas-title' id='offcanvasWithBothOptionsLabel'>" . $_SESSION["user_name"] . "</h5>
+                            <button type='button' class='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button>
+                        </div>
+                        <div class='offcanvas-body'>
+                            <a class='btn btn-primary' href='" . URL_PATH . "/user' role='button'><i class='fa-solid fa-gear'></i>  Manage your account</a>
+                            <a class='btn btn-primary' href='" . URL_PATH . "/login/logout' role='button'><i class='fa-solid fa-right-from-bracket'></i>  Logout</a>
+                        </div>";
+                } else {
+                    echo "<div class='offcanvas-header'>
+                            <h5 class='offcanvas-title' id='offcanvasWithBothOptionsLabel'>User options</h5>
+                            <button type='button' class='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button>
+                        </div>
+                        <div class='offcanvas-body'>
+                            <a class='btn btn-primary' href='" . URL_PATH . "/login' role='button'>Login</a>
+                            <a class='btn btn-primary' href='" . URL_PATH . "/login/register' role='button'>Register</a>
+                        </div>";
+                }
+                ?>
             </div>
         </nav>
     </header>
 
     <!-- Content -->
     <div class="container">
+        <!-- Sign in message -->
+        <?php
+        if (!isset($_SESSION["user_name"])) {
+            echo "
+                    <p class='login-message'>
+                        <a href='" . URL_PATH . "/login' class='a-session'>Login</a> or 
+                        <a href='" . URL_PATH . "/login/register' class='a-session'>Register</a> so you can publish or comment.
+                    </p>";
+        }
+        ?>
         <div class="row">
             <?php echo $content; ?>
         </div>

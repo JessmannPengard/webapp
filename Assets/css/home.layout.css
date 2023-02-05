@@ -64,11 +64,15 @@
     padding: 10px 25px;
 }
 
-.user-name {
+.a-username{
+    text-decoration: none;
+    color: #415F69;
     font-weight: bold;
 }
 
-.user-name-comment {
+.a-username-comment {
+    text-decoration: none;
+    color: #415F69;
     font-size: 13px;
     font-weight: bold;
 }
@@ -86,6 +90,11 @@
 .post-text {
     padding-left: 10px;
     margin-bottom: 5px;
+}
+
+.post-content{
+    text-decoration: none;
+    color: black;
 }
 
 .comment-text {
@@ -118,17 +127,6 @@
 .send-post {
     display: flex;
     flex-direction: column;
-}
-
-.discard-post {
-    border: 1px solid black;
-    border-radius: 3px;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-    background-color: rgb(184, 158, 158);
-    margin-top: 10px;
-    padding: 2px;
 }
 
 .input-post {

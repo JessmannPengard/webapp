@@ -20,7 +20,7 @@
       echo "<article class='article-post'>
               <div class='user-post'>
                 <div>
-                  <span class='user-name'>" . $posts[$key]["user_name"] . "</span>
+                  <a href='" . URL_PATH . "/user/watch?" . $posts[$key]["id_user"] . "' class='a-username'><span class='user-name'>" . $posts[$key]["user_name"] . "</span></a>
                   <span class='post-date'> · " . $time . "</span>";
       if ($posts[$key]["post_edit_datetime"] != null) {
         echo "<span class='post-date'> · edited " . $editTime . "</span>";
@@ -34,12 +34,12 @@
                   </div>";
       }
       echo "</div>
-            <p class='post-text'>" . $posts[$key]["post"] . "</p>";
+      <a href='" . URL_PATH . "/home/viewpost?" . $posts[$key]["id_post"] . "' class='post-content'><p class='post-text'>" . $posts[$key]["post"] . "</p></a>";
       $db = new Database;
       $post = new Post($db->getConnection());
       // Get number of comments for each post and show
       $comments = $post->getPosts(0, $posts[$key]["id_post"]);
-      echo "<p class='post-comments'>" . count($comments) . "<a href='" . URL_PATH . "/home/viewpost?" . $posts[$key]["id_post"] . "' class='optPost'><i class='fa-regular fa-comment img-comment'></i></a></p>
+      echo "<p class='post-comments'>" . count($comments) . "<i class='fa-regular fa-comment img-comment'></i></p>
             </article>";
     }
     ?>
