@@ -7,9 +7,6 @@ require_once(__DIR__ . '/../Models/db.php');
 require_once(__DIR__ . '/../Models/orm.php');
 require_once(__DIR__ . '/../Models/user.php');
 
-// Number of random users to get
-$num_users = 5;
-
 
 // Function to register new users from randomuser API
 function registerUsers($qty)
@@ -54,6 +51,7 @@ function registerUsers($qty)
     }
 }
 
+// Function to create new posts from baconIpsun API
 function publishPosts($qty)
 {
     $db = new Database;
@@ -67,4 +65,5 @@ function publishPosts($qty)
     }
 }
 
+//registerUsers(20);
 publishPosts(10);
