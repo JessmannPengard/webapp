@@ -17,14 +17,6 @@ class Router
         $url = explode("/", $this->route);
         $this->controller = ($url[0] != "" ? $url[0] : "home") . "Controller";
         $this->method = isset($url[1]) ? $url[1] : "index";
-        /*if ($this->controller == "homeController") {
-        session_start();
-        if (!isset($_SESSION["user_name"])) {
-        header("Location: " . URL_PATH . "/login");
-        //require_once(__DIR__ . "./../Controllers/loginController.php");
-        exit;
-        }
-        }*/
 
         $route_controller = __DIR__ . "/../Controllers/" . $this->controller . ".php";
         if (file_exists($route_controller)) {

@@ -1,5 +1,5 @@
 <?php
-// Script for populate the Database from an API with some fake users, posts and comments
+// Script for populate the Database from some APIs with some fake users, posts and comments
 
 // Requires
 require_once(__DIR__ . '/../Config/config.php');

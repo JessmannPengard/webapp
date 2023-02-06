@@ -1,3 +1,4 @@
+// Validates Repeat Password in register or change password forms
 window.onload = function () {
     let form = document.getElementById("registerForm");
     form.onsubmit = function (e) {
