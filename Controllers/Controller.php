@@ -1,6 +1,8 @@
 <?php
+// Main controller, all others expands this
 class Controller
 {
+    // The function renders views joining the view with the layout and passing parameters from controller to view
     protected function render($path, $parameters = [], $layout = "")
     {
         extract($parameters);
